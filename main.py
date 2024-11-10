@@ -4,8 +4,9 @@ from idioma.idioma import idioma_percentages
 from collections import Counter
 
 ## Iniciando importação do arquivo csv com o csv reader
-## comecei com um arquivo com apenas 30 linhas pois o csv inteiro é muito grande.
-with open('teste.csv') as csv_file:
+## Após multiplas tentativas, precisei deixar apenas os primeiros 80 jogos pois o csv inteiro é muito grande.
+
+with open('steam_games.csv') as csv_file:
   csv_reader = csv.reader(csv_file, delimiter=',')
   next(csv_reader)
   lines = [[element.strip() for element in row] for row in csv_reader]
@@ -61,7 +62,7 @@ if year_count:
 else:
   print("ERRO, nenhum ano encontrado na contagem")
 
-## Percentual de jogos que possuem Portugues ( Portuguese - Brazil) como idioma no audio ou linguagem suportada.
+## Percentual de jogos que possuem Portugues ( Portuguese - Brazil) como idioma suportado. Considerando principalmente os últimos 5 anos.
 languageP_percent, port2020_percent = idioma_percentages(games)
 print(f"Percentual do total de jogos com Portugues como idioma suportado: {languageP_percent:.2f}%")
-print(f"Percentual de jogos com Português, lançados nos últimos 4 anos: {port2020_percent:.2f}%")
+print(f"Percentual de jogos com Português, lançados nos últimos 5 anos: {port2020_percent:.2f}%")
